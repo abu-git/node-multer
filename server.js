@@ -20,6 +20,11 @@ app.post('/single', upload.single('image'), (req, res) => {
     res.send('Single File upload success')
 })
 
+app.post('/multiple', upload.array('images', 3), (req, res) => {
+    console.log(req.files)
+    res.send('Multiple File upload success')
+})
+
 app.listen(PORT, () => {
     console.log("server running on PORT: " + PORT)
 })
