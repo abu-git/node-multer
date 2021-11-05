@@ -1,5 +1,6 @@
 const express = require('express')
 const multer = require('multer')
+const path =  require('path')
 
 const PORT = 5000
 const app = express()
@@ -14,6 +15,10 @@ const fileStorageEngine = multer.diskStorage({
 })
 
 const upload = multer({storage: fileStorageEngine})
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"))
+})
 
 app.post('/single', upload.single('image'), (req, res) => {
     console.log(req.file)
