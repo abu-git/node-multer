@@ -1,9 +1,12 @@
 const express = require('express')
 const multer = require('multer')
 const path =  require('path')
+const cors = require('cors')
 
 const PORT = 5000
 const app = express()
+
+app.use(cors())
 
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
